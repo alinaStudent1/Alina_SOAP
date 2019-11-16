@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:testCase id="1f1de099-77e2-4618-a8bb-c861757f7631" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create list" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+<con:testCase id="8fa73a1c-7066-467f-be83-ec9aa1cc4be3" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create Card" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
   <con:settings>
-    <con:setting id="1f1de099-77e2-4618-a8bb-c861757f7631fileName">Create-list</con:setting>
+    <con:setting id="8fa73a1c-7066-467f-be83-ec9aa1cc4be3fileName">Create-Card</con:setting>
   </con:settings>
   <con:savedRecentRuns>1</con:savedRecentRuns>
-  <con:testStep type="properties" name="Properties" id="e3dbfbab-5c0a-4c2c-920a-218b79155c3e">
+  <con:testStep type="properties" name="Properties" id="541007e1-8879-4d6a-a1fd-08ab72abb959">
     <con:settings/>
     <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:properties>
         <con:property>
+          <con:name>listId</con:name>
+          <con:value>5dd07dbf921aee768b38531a</con:value>
+        </con:property>
+        <con:property>
+          <con:name>cardId</con:name>
+        </con:property>
+        <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd0578148a74f5c887a8e8e</con:value>
+          <con:value>5dd07dbebcfe2577369de9c5</con:value>
         </con:property>
       </con:properties>
     </con:config>
   </con:testStep>
-  <con:testStep type="datagen" name="DataGen" id="1ad2312c-1876-459d-8787-cca58cea6c66">
+  <con:testStep type="datagen" name="DataGen" id="b74c4f24-4369-465d-ab17-a6d41dd37ed3">
     <con:settings/>
     <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:property type="Number">
@@ -62,9 +69,31 @@
         <con:mode>STEP</con:mode>
         <con:shared>false</con:shared>
       </con:property>
+      <con:property type="Number">
+        <con:configuration>
+          <start>1</start>
+          <end>9999</end>
+          <step/>
+          <pattern/>
+          <random>true</random>
+          <persist>false</persist>
+        </con:configuration>
+        <con:name>rand_card</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Template">
+        <con:configuration>
+          <template>list_${rand_card}</template>
+          <entitize>false</entitize>
+        </con:configuration>
+        <con:name>cardName</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
     </con:config>
   </con:testStep>
-  <con:testStep type="calltestcase" name="Create Board" id="5aa46cba-222f-4d30-b9ff-c7552779e0fb">
+  <con:testStep type="calltestcase" name="Create Board" id="ab5182eb-f9d2-48d4-ab7c-d79c6ae529e3">
     <con:settings/>
     <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:targetTestCase>8de7e245-dc7f-4dfe-9b90-14eef467345a</con:targetTestCase>
@@ -75,7 +104,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd0578148a74f5c887a8e8e</con:value>
+          <con:value>5dd07dbebcfe2577369de9c5</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -84,7 +113,7 @@
       <con:runMode>PARALLELL</con:runMode>
     </con:config>
   </con:testStep>
-  <con:testStep type="transfer" name="Transfer Board Id" id="4c8e7557-133f-4935-83aa-2d51ff81d491">
+  <con:testStep type="transfer" name="Transfer Board Id" id="c33fbbe5-abb5-4e43-9ac8-bb9e1908e0c6">
     <con:settings/>
     <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
@@ -99,7 +128,7 @@
       </con:transfers>
     </con:config>
   </con:testStep>
-  <con:testStep type="calltestcase" name="Create List" id="f908708f-181f-462e-b54f-18200a835047">
+  <con:testStep type="calltestcase" name="Create List" id="6fe8023d-c3bb-4ffe-af5b-c1243e9fa529">
     <con:settings/>
     <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:targetTestCase>e1150ed4-acbd-458f-8826-999842bd0470</con:targetTestCase>
@@ -114,7 +143,7 @@
         </con:property>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd057828c3d28415b96187f</con:value>
+          <con:value>5dd07dbf921aee768b38531a</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -123,6 +152,41 @@
       <con:runMode>PARALLELL</con:runMode>
     </con:config>
   </con:testStep>
+  <con:testStep type="transfer" name="Transfer List Id" id="81d8a1b2-a702-4647-9446-d444b0c4e43f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>list_id</con:name>
+        <con:sourceType>listId</con:sourceType>
+        <con:sourceStep>Create List</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>listId</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
   <con:properties/>
   <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>b74c4f24-4369-465d-ab17-a6d41dd37ed3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>81d8a1b2-a702-4647-9446-d444b0c4e43f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ab5182eb-f9d2-48d4-ab7c-d79c6ae529e3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>c33fbbe5-abb5-4e43-9ac8-bb9e1908e0c6</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
 </con:testCase>

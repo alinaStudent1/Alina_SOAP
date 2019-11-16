@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="837f1899-b581-4099-aff2-569fd2f32c31" name="Card Processing" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="837f1899-b581-4099-aff2-569fd2f32c31fileName">Card-Processing</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testSuite>
