@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="1f1de099-77e2-4618-a8bb-c861757f7631" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create list" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="1f1de099-77e2-4618-a8bb-c861757f7631fileName">Create-list</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="e3dbfbab-5c0a-4c2c-920a-218b79155c3e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties/>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen" id="1ad2312c-1876-459d-8787-cca58cea6c66">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Number">
+        <con:configuration/>
+        <con:name>rand_board</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Template">
+        <con:configuration>
+          <template>board_${rand}</template>
+          <entitize>false</entitize>
+        </con:configuration>
+        <con:name>boardName</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create Board" id="5aa46cba-222f-4d30-b9ff-c7552779e0fb">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>8de7e245-dc7f-4dfe-9b90-14eef467345a</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>boardName</con:name>
+          <con:value>${DataGen#boardName}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>boardId</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>boardId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

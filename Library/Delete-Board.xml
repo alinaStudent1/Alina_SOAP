@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="7c9ea336-a015-40d4-b821-8d0c344f841a" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Delete Board" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="7c9ea336-a015-40d4-b821-8d0c344f841afileName">Delete-Board</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="groovy" name="Log Message (Method Started)" id="94e6673f-96c3-4d14-a619-728f134827f6">
+    <con:settings/>
+    <con:config>
+      <script>def boardId = context.expand( '${#TestCase#boardId}' )
+
+log.info("Deleting a board [Id = ${boardId}]...")</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Delete Board" id="a1f47d55-f397-48c1-9a9e-198052f16721">
+    <con:settings/>
+    <con:config service="https://api.trello.com" resourcePath="/boards/{boardId}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Delete Board" id="530d290e-94e3-46f5-adf0-84f184be13d1" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://api.trello.com/1/boards/</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="332500b4-b57d-4c2d-a6a5-94d727a29c88" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="boardId" value="${#TestCase#boardId}"/>
+          <con:entry key="key" value="${#Project#key}"/>
+          <con:entry key="token" value="${#Project#token}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>key</con:entry>
+          <con:entry>token</con:entry>
+          <con:entry>boardId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Check Board Deleted" id="28c28498-6369-4120-a78a-01e70df5920a">
+    <con:settings/>
+    <con:config service="https://api.trello.com" resourcePath="/boards/{boardId}" methodName="Get" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Check Board Deleted" id="03c24a14-41a2-4eae-9369-c9a7a14f011a" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://api.trello.com/1/boards/5b72b538561bd90b1c67c2b2</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="af361362-30b2-4b2e-97d5-3639b39daba3" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>404</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="boardId" value="${#TestCase#boardId}"/>
+          <con:entry key="key" value="${#Project#key}"/>
+          <con:entry key="token" value="${#Project#token}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>key</con:entry>
+          <con:entry>token</con:entry>
+          <con:entry>boardId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="Log Message (Method Finished)" id="34187b29-958c-44d5-9f42-0ba558fc8125">
+    <con:settings/>
+    <con:config>
+      <script>log.info("A board has been deleted.")</script>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>boardId</con:name>
+      <con:value>5dcff140c59b871764d79f2b</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>
