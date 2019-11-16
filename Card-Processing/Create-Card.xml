@@ -10,14 +10,14 @@
       <con:properties>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd07dbf921aee768b38531a</con:value>
+          <con:value>5dd0838444d50f28e277d584</con:value>
         </con:property>
         <con:property>
           <con:name>cardId</con:name>
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd07dbebcfe2577369de9c5</con:value>
+          <con:value>5dd083833c247e28e116d9f1</con:value>
         </con:property>
       </con:properties>
     </con:config>
@@ -104,7 +104,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd07dbebcfe2577369de9c5</con:value>
+          <con:value>5dd083833c247e28e116d9f1</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -143,7 +143,7 @@
         </con:property>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd07dbf921aee768b38531a</con:value>
+          <con:value>5dd0838444d50f28e277d584</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -165,6 +165,34 @@
         <con:targetPath/>
         <con:upgraded>true</con:upgraded>
       </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create Card" id="058b8960-602d-4dbe-b24c-3ea3c481e646">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>393b77c7-2c0b-466e-8c00-4bc9419725ab</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>cardId</con:name>
+          <con:value>5dd08384e156a58afe621607</con:value>
+        </con:property>
+        <con:property>
+          <con:name>listId</con:name>
+          <con:value>${Properties#listId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>boardId</con:name>
+          <con:value>${Properties#boardId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>cardName</con:name>
+          <con:value>${DataGen#cardName}</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>cardId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
     </con:config>
   </con:testStep>
   <con:properties/>

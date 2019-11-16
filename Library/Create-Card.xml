@@ -78,7 +78,7 @@ log.info("Creating a card with name ${cardName} in list with Id  = ${listId}] on
         <con:assertion type="JsonPath Match" id="000e9e0c-77e2-4e13-884b-50864a5dae33" name="JsonPath Match">
           <con:configuration>
             <path>$['name']</path>
-            <content>test name</content>
+            <content>${#TestCase#cardName}</content>
             <allowWildcards>false</allowWildcards>
             <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
             <ignoreComments>false</ignoreComments>

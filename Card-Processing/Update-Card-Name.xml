@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="e13e06cb-621c-43e8-a7f1-ce365c31f091" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Update Card Name" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="e13e06cb-621c-43e8-a7f1-ce365c31f091fileName">Update-Card-Name</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="ce313731-71ff-423f-be79-83b7e692b2d7">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties/>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>
