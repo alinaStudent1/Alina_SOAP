@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:resource name="GET_lists" path="/lists{id}" id="fbf98af0-943c-4c4a-8d5a-ddf73d217ec0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+<con:resource name="PUT_lists" path="/lists/{id}" id="fbf98af0-943c-4c4a-8d5a-ddf73d217ec0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
   <con:settings>
     <con:setting id="fbf98af0-943c-4c4a-8d5a-ddf73d217ec0fileName">GET_lists1</con:setting>
   </con:settings>
@@ -25,17 +25,41 @@
       <con:default/>
       <con:description xsi:nil="true"/>
     </con:parameter>
+    <con:parameter>
+      <con:name>name</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
   </con:parameters>
-  <con:method name="Update" id="5c68d9d7-de57-41eb-b585-6a4cc6cca917" method="GET">
+  <con:method name="Update" id="5c68d9d7-de57-41eb-b585-6a4cc6cca917" method="PUT">
     <con:settings/>
     <con:parameters/>
-    <con:request name="Request 1" id="d7a472bb-a960-46ad-9ecb-6136fd93126a" mediaType="application/json">
+    <con:representation type="FAULT">
+      <con:mediaType>text/plain; charset=utf-8</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+      <con:element>data</con:element>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json; charset=utf-8</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element xmlns:lis="https://api.trello.com/1/lists">lis:Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="d7a472bb-a960-46ad-9ecb-6136fd93126a" mediaType="application/json" postQueryString="false">
       <con:settings>
         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
       </con:settings>
       <con:endpoint>${#Project#serviceUrl}</con:endpoint>
       <con:request/>
       <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
         <con:authType>No Authorization</con:authType>
       </con:credentials>
       <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
@@ -47,6 +71,7 @@
         <con:entry>id</con:entry>
         <con:entry>key</con:entry>
         <con:entry>token</con:entry>
+        <con:entry>name</con:entry>
       </con:parameterOrder>
     </con:request>
   </con:method>

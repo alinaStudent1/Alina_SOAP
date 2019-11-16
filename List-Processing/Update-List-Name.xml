@@ -14,10 +14,11 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value/>
+          <con:value>5dd05062a1647a17027dc13e</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>
+          <con:value>5dd05063a2bf6671c50900ed</con:value>
         </con:property>
       </con:properties>
     </con:config>
@@ -104,7 +105,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd04dccac549d5356fbe060</con:value>
+          <con:value>5dd05062a1647a17027dc13e</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -135,7 +136,7 @@
       <con:properties>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>${DataGen#boardName}</con:value>
+          <con:value>${Properties#boardId}</con:value>
         </con:property>
         <con:property>
           <con:name>listName</con:name>
@@ -143,6 +144,7 @@
         </con:property>
         <con:property>
           <con:name>listId</con:name>
+          <con:value>5dd05063a2bf6671c50900ed</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -168,19 +170,37 @@
   </con:testStep>
   <con:testStep type="restrequest" name="Update List Name" id="035530d3-1f83-4798-af02-cd407ebabde0">
     <con:settings/>
-    <con:config service="https://api.trello.com" resourcePath="/lists{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <con:restRequest name="Update List Name" id="d7a472bb-a960-46ad-9ecb-6136fd93126a" mediaType="application/json">
+    <con:config service="https://api.trello.com" resourcePath="/lists/{id}" methodName="Update" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Update List Name" id="d7a472bb-a960-46ad-9ecb-6136fd93126a" mediaType="application/json" postQueryString="false">
         <con:settings>
           <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
         </con:settings>
         <con:endpoint>${#Project#serviceUrl}</con:endpoint>
         <con:request/>
+        <con:originalUri>https://api.trello.com/1/lists</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="5fd05190-ef26-4ca8-b166-7f57e78322ce" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="6d3d5512-6210-43b4-90f5-446a31668f04" name="JsonPath Match">
+          <con:configuration>
+            <path>$['name']</path>
+            <content>${DataGen#listNewName}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
         <con:credentials>
           <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
           <con:authType>No Authorization</con:authType>
         </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:parameters>
+          <con:entry key="name" value="${DataGen#listNewName}"/>
+          <con:entry key="id" value="${Properties#listId}"/>
           <con:entry key="key" value="${#Project#key}"/>
           <con:entry key="token" value="${#Project#token}"/>
         </con:parameters>
@@ -188,6 +208,7 @@
           <con:entry>id</con:entry>
           <con:entry>key</con:entry>
           <con:entry>token</con:entry>
+          <con:entry>name</con:entry>
         </con:parameterOrder>
       </con:restRequest>
     </con:config>
