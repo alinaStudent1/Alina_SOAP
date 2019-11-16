@@ -8,8 +8,15 @@
     <con:settings/>
     <con:config>
       <script>def boardId = context.expand( '${#TestCase#boardId}' )
+def listName = context.expand( '${#TestCase#listName}' )
 
-log.info("Creating a list [Id = ${boardId}]...")</script>
+log.info("Creating a list with name ${listName} in boqrd with Id  = ${boardId}]...")</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="Log Message (Method Finished)" id="6122d093-dc5f-42be-9639-8fa5b95f5cee">
+    <con:settings/>
+    <con:config>
+      <script>log.info("A new list has been added to board.")</script>
     </con:config>
   </con:testStep>
   <con:properties>
