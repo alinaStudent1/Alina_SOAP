@@ -7,7 +7,12 @@
   <con:testStep type="properties" name="Properties" id="e3dbfbab-5c0a-4c2c-920a-218b79155c3e">
     <con:settings/>
     <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <con:properties/>
+      <con:properties>
+        <con:property>
+          <con:name>boardId</con:name>
+          <con:value>5dd0375a12e49220c744ae1e</con:value>
+        </con:property>
+      </con:properties>
     </con:config>
   </con:testStep>
   <con:testStep type="datagen" name="DataGen" id="1ad2312c-1876-459d-8787-cca58cea6c66">
@@ -50,7 +55,7 @@
       </con:property>
       <con:property type="Template">
         <con:configuration>
-          <template>board_${rand_list}</template>
+          <template>list_${rand_list}</template>
           <entitize>false</entitize>
         </con:configuration>
         <con:name>listName</con:name>
@@ -70,11 +75,50 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dcffd26544a9c27e9a41428</con:value>
+          <con:value>5dd0375a12e49220c744ae1e</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
         <con:entry>boardId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Transfer Board Id" id="4c8e7557-133f-4935-83aa-2d51ff81d491">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>board_id</con:name>
+        <con:sourceType>boardId</con:sourceType>
+        <con:sourceStep>Create Board</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>boardId</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create List" id="f908708f-181f-462e-b54f-18200a835047">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>e1150ed4-acbd-458f-8826-999842bd0470</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>boardId</con:name>
+          <con:value>${Properties#boardId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>listName</con:name>
+          <con:value>${DataGen#listName}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>listId</con:name>
+          <con:value>5dd0375ad3aab12140c1a5f2</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>listId</con:entry>
       </con:returnProperties>
       <con:runMode>PARALLELL</con:runMode>
     </con:config>

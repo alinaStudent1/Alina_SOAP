@@ -15,22 +15,24 @@ log.info("Creating a list with name ${listName} in boqrd with Id  = ${boardId}].
   </con:testStep>
   <con:testStep type="restrequest" name="Create List" id="abc814a7-5b1d-4de1-a3e0-d5052ce92841">
     <con:settings/>
-    <con:config service="https://api.trello.com" resourcePath="/1/lists" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:config service="https://api.trello.com" resourcePath="/lists" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:restRequest name="Create List" id="ed032ca0-da62-4ee9-ab9f-a2ca4d82b428" mediaType="application/json" postQueryString="false">
         <con:settings>
           <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
         </con:settings>
         <con:endpoint>${#Project#serviceUrl}</con:endpoint>
         <con:request/>
+        <con:originalUri>https://api.trello.com/1/lists</con:originalUri>
         <con:credentials>
           <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
           <con:authType>No Authorization</con:authType>
         </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:parameters>
+          <con:entry key="idBoard" value="${#TestCase#boardId}"/>
           <con:entry key="name" value="${#TestCase#listName}"/>
-          <con:entry key="key" value="${#Project#key"/>
-          <con:entry key="token" value="${#Project#token"/>
+          <con:entry key="key" value="${#Project#key}"/>
+          <con:entry key="token" value="${#Project#token}"/>
         </con:parameters>
         <con:parameterOrder>
           <con:entry>key</con:entry>
@@ -59,17 +61,36 @@ log.info("Creating a list with name ${listName} in boqrd with Id  = ${boardId}].
   </con:testStep>
   <con:testStep type="restrequest" name="Check List Created" id="a73e3aa3-7bce-4bb5-bc81-e22184aaec7f">
     <con:settings/>
-    <con:config service="https://api.trello.com" resourcePath="/1/lists/{id}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:config service="https://api.trello.com" resourcePath="/lists/{id}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:restRequest name="Check List Created" id="05ec653a-ec0f-49de-b0c1-82255efb6c3c" mediaType="application/json">
         <con:settings>
           <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
         </con:settings>
         <con:endpoint>${#Project#serviceUrl}</con:endpoint>
         <con:request/>
+        <con:originalUri>https://api.trello.com/1/lists/</con:originalUri>
         <con:assertion type="Valid HTTP Status Codes" id="d060ff23-bf42-4ec7-9a1e-8a43d2ff9308" name="Valid HTTP Status Codes">
           <con:settings/>
           <con:configuration>
             <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="a2e25243-1122-47fe-9861-8107508a1391" name="Valid List Name">
+          <con:configuration>
+            <path>$['name']</path>
+            <content>${Create List#name}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="fefbf704-721d-450e-9988-ef2ed8ecd251" name="Valid Board Id">
+          <con:configuration>
+            <path>$['idBoard']</path>
+            <content>${Create List#idBoard}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
           </con:configuration>
         </con:assertion>
         <con:credentials>
@@ -78,6 +99,7 @@ log.info("Creating a list with name ${listName} in boqrd with Id  = ${boardId}].
         </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:parameters>
+          <con:entry key="id" value="${#TestCase#listId}"/>
           <con:entry key="key" value="${#Project#key}"/>
           <con:entry key="token" value="${#Project#token}"/>
         </con:parameters>
@@ -98,15 +120,15 @@ log.info("Creating a list with name ${listName} in boqrd with Id  = ${boardId}].
   <con:properties>
     <con:property>
       <con:name>boardId</con:name>
-      <con:value/>
+      <con:value>5dd0366f263a4e480c4e6c37</con:value>
     </con:property>
     <con:property>
       <con:name>listName</con:name>
-      <con:value/>
+      <con:value>test name</con:value>
     </con:property>
     <con:property>
       <con:name>listId</con:name>
-      <con:value/>
+      <con:value>5dd03779f606dc5fccc2b602</con:value>
     </con:property>
   </con:properties>
   <con:reportParameters/>

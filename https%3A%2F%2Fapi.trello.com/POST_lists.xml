@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:resource name="POST_lists" path="/1/lists" id="4be57706-609c-42ac-923e-e9703435ff7f" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+<con:resource name="POST_lists" path="/lists" id="4be57706-609c-42ac-923e-e9703435ff7f" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
   <con:settings>
     <con:setting id="4be57706-609c-42ac-923e-e9703435ff7ffileName">POST_lists</con:setting>
   </con:settings>
@@ -36,6 +36,22 @@
   <con:method name="Create" id="913909aa-b97a-416b-ba9f-21106886816e" method="POST">
     <con:settings/>
     <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="FAULT">
+      <con:mediaType>text/plain; charset=utf-8</con:mediaType>
+      <con:status>400 401</con:status>
+      <con:params/>
+      <con:element>data</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json; charset=utf-8</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element xmlns:lis="https://api.trello.com/1/lists">lis:Response</con:element>
+    </con:representation>
     <con:request name="Request 1" id="ed032ca0-da62-4ee9-ab9f-a2ca4d82b428" mediaType="application/json" postQueryString="false">
       <con:settings>
         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
@@ -43,12 +59,13 @@
       <con:endpoint>${#Project#serviceUrl}</con:endpoint>
       <con:request/>
       <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
         <con:authType>No Authorization</con:authType>
       </con:credentials>
       <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
       <con:parameters>
-        <con:entry key="key" value="${#Project#key"/>
-        <con:entry key="token" value="${#Project#token"/>
+        <con:entry key="key" value="${#Project#key}"/>
+        <con:entry key="token" value="${#Project#token}"/>
       </con:parameters>
       <con:parameterOrder>
         <con:entry>key</con:entry>
