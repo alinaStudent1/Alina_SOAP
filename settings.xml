@@ -4,6 +4,10 @@
     <con:setting id="314b7718-9c5f-49f0-8d1b-294481e85fa8fileName">REST-Project-Home-Task-Example</con:setting>
     <con:setting id="Port">8082</con:setting>
   </con:settings>
+  <con:vcsConfiguration>
+    <con:vcsName>Git</con:vcsName>
+    <con:repositoryIdentifier>https://github.com/alinaStudent1/Alina_SOAP.git</con:repositoryIdentifier>
+  </con:vcsConfiguration>
   <con:savedRecentRuns>1</con:savedRecentRuns>
   <con:requirements/>
   <con:properties>
