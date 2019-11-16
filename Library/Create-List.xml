@@ -13,6 +13,82 @@ def listName = context.expand( '${#TestCase#listName}' )
 log.info("Creating a list with name ${listName} in boqrd with Id  = ${boardId}]...")</script>
     </con:config>
   </con:testStep>
+  <con:testStep type="restrequest" name="Create List" id="abc814a7-5b1d-4de1-a3e0-d5052ce92841">
+    <con:settings/>
+    <con:config service="https://api.trello.com" resourcePath="/1/lists" methodName="Create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create List" id="ed032ca0-da62-4ee9-ab9f-a2ca4d82b428" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="name" value="${#TestCase#listName}"/>
+          <con:entry key="key" value="${#Project#key"/>
+          <con:entry key="token" value="${#Project#token"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>key</con:entry>
+          <con:entry>token</con:entry>
+          <con:entry>name</con:entry>
+          <con:entry>idBoard</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Transfer List Id" id="95813ea5-7c8b-4892-8f1f-f72299331acf">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>list_id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create List</con:sourceStep>
+        <con:sourcePath>$.['id']</con:sourcePath>
+        <con:targetType>listId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Check List Created" id="a73e3aa3-7bce-4bb5-bc81-e22184aaec7f">
+    <con:settings/>
+    <con:config service="https://api.trello.com" resourcePath="/1/lists/{id}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Check List Created" id="05ec653a-ec0f-49de-b0c1-82255efb6c3c" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+        <con:request/>
+        <con:assertion type="Valid HTTP Status Codes" id="d060ff23-bf42-4ec7-9a1e-8a43d2ff9308" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="key" value="${#Project#key}"/>
+          <con:entry key="token" value="${#Project#token}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>id</con:entry>
+          <con:entry>key</con:entry>
+          <con:entry>token</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
   <con:testStep type="groovy" name="Log Message (Method Finished)" id="6122d093-dc5f-42be-9639-8fa5b95f5cee">
     <con:settings/>
     <con:config>
@@ -28,6 +104,25 @@ log.info("Creating a list with name ${listName} in boqrd with Id  = ${boardId}].
       <con:name>listName</con:name>
       <con:value/>
     </con:property>
+    <con:property>
+      <con:name>listId</con:name>
+      <con:value/>
+    </con:property>
   </con:properties>
   <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>abc814a7-5b1d-4de1-a3e0-d5052ce92841</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>95813ea5-7c8b-4892-8f1f-f72299331acf</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a73e3aa3-7bce-4bb5-bc81-e22184aaec7f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
 </con:testCase>

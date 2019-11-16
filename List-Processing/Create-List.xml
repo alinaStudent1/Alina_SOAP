@@ -14,17 +14,46 @@
     <con:settings/>
     <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:property type="Number">
-        <con:configuration/>
+        <con:configuration>
+          <start>1</start>
+          <end>9999</end>
+          <step/>
+          <pattern/>
+          <random>true</random>
+          <persist>false</persist>
+        </con:configuration>
         <con:name>rand_board</con:name>
         <con:mode>STEP</con:mode>
         <con:shared>false</con:shared>
       </con:property>
       <con:property type="Template">
         <con:configuration>
-          <template>board_${rand}</template>
+          <template>board_${rand_board}</template>
           <entitize>false</entitize>
         </con:configuration>
         <con:name>boardName</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Number">
+        <con:configuration>
+          <start>1</start>
+          <end>9999</end>
+          <step/>
+          <pattern/>
+          <random>true</random>
+          <persist>false</persist>
+        </con:configuration>
+        <con:name>rand_list</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Template">
+        <con:configuration>
+          <template>board_${rand_list}</template>
+          <entitize>false</entitize>
+        </con:configuration>
+        <con:name>listName</con:name>
         <con:mode>STEP</con:mode>
         <con:shared>false</con:shared>
       </con:property>
