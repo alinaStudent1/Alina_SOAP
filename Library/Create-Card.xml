@@ -111,7 +111,7 @@ log.info("Creating a card with name ${cardName} in list with Id  = ${listId}] on
   <con:properties>
     <con:property>
       <con:name>cardId</con:name>
-      <con:value>5dd07d9ca5bb14486c387c43</con:value>
+      <con:value>5dd08f9c2f1021503fd21289</con:value>
     </con:property>
     <con:property>
       <con:name>listId</con:name>

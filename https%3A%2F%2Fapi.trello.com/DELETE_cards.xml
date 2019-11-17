@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:resource name="PUT_cards" path="/cards/{id}" id="935b5a18-da9e-4d9c-94f0-bb1176eeb00f" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+<con:resource name="DELETE_cards" path="/cards/{id}" id="8074a8d4-3728-4818-a2cc-a7f34720b21d" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
   <con:settings>
-    <con:setting id="935b5a18-da9e-4d9c-94f0-bb1176eeb00ffileName">PUT_cards</con:setting>
+    <con:setting id="8074a8d4-3728-4818-a2cc-a7f34720b21dfileName">DELETE_cards</con:setting>
   </con:settings>
   <con:parameters>
     <con:parameter>
@@ -25,41 +25,33 @@
       <con:default/>
       <con:description xsi:nil="true"/>
     </con:parameter>
-    <con:parameter>
-      <con:name>name</con:name>
-      <con:value/>
-      <con:style>QUERY</con:style>
-      <con:default/>
-      <con:description xsi:nil="true"/>
-    </con:parameter>
   </con:parameters>
-  <con:method name="Method 1" id="34ce62b0-76ed-41f1-b9dd-b1419fe025ae" method="PUT">
+  <con:method name="Delete" id="74181426-e709-4e17-b743-3cc94bb5f1a8" method="DELETE">
     <con:settings/>
     <con:parameters/>
-    <con:representation type="REQUEST">
-      <con:mediaType>application/json</con:mediaType>
-      <con:params/>
-    </con:representation>
     <con:representation type="FAULT">
       <con:mediaType>text/plain; charset=utf-8</con:mediaType>
       <con:status>404</con:status>
       <con:params/>
       <con:element>data</con:element>
     </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
     <con:representation type="RESPONSE">
       <con:mediaType>application/json; charset=utf-8</con:mediaType>
       <con:status>200</con:status>
       <con:params/>
-      <con:element xmlns:dd0="https://api.trello.com/1/cards/5dd08a24ff19a24fbd738789">dd0:Response</con:element>
+      <con:element xmlns:car="https://api.trello.com/1/cards/">car:Response</con:element>
     </con:representation>
-    <con:request name="Request 1" id="37372b48-c9e5-4730-85e8-301e0ae5c928" mediaType="application/json" postQueryString="false">
+    <con:request name="Request 1" id="dedeb122-badc-44ad-a6ab-a2526e4eb482" mediaType="application/json" postQueryString="false">
       <con:settings>
         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
       </con:settings>
       <con:endpoint>${#Project#serviceUrl}</con:endpoint>
       <con:request/>
       <con:credentials>
-        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
         <con:authType>No Authorization</con:authType>
       </con:credentials>
       <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
@@ -71,7 +63,6 @@
         <con:entry>key</con:entry>
         <con:entry>token</con:entry>
         <con:entry>id</con:entry>
-        <con:entry>name</con:entry>
       </con:parameterOrder>
     </con:request>
   </con:method>

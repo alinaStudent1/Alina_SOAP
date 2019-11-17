@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="f185ae93-a5a7-4166-8b0f-2203474805d4" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Delete Card" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f185ae93-a5a7-4166-8b0f-2203474805d4fileName">Delete-Card</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="groovy" name="Log Message (Method Started)" id="e19aea79-7bf7-4029-8114-2faebcd5f101">
+    <con:settings/>
+    <con:config>
+      <script>def boardId = context.expand( '${#TestCase#boardId}' )
+def listId = context.expand( '${#TestCase#listId}' )
+def cardName = context.expand( '${#TestCase#cardName}' )
+
+log.info("Delete a card with name ${cardName} from  list with Id  = ${listId}] on board  Id  = ${boardId}]...")</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Delete Card" id="da16b130-946a-4ff1-9bc0-791ce7d4d685">
+    <con:settings/>
+    <con:config service="https://api.trello.com" resourcePath="/cards/{id}" methodName="Delete" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Delete Card" id="dedeb122-badc-44ad-a6ab-a2526e4eb482" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://api.trello.com/1/cards/</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="0edab37b-022e-4f5f-813d-619f31e25e96" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="id" value="${#TestCase#cardId}"/>
+          <con:entry key="key" value="${#Project#key}"/>
+          <con:entry key="token" value="${#Project#token}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>key</con:entry>
+          <con:entry>token</con:entry>
+          <con:entry>id</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Check Card Deleted" id="2658091f-00ba-4471-9164-1ffc2cda84a7">
+    <con:settings/>
+    <con:config service="https://api.trello.com" resourcePath="/cards/{id}" methodName="Get" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Check Card Deleted" id="a18c5369-3ddb-4101-9277-40cf95b0214e" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://api.trello.com/1/cards/</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="373aa254-b911-447b-bbed-b015095f4232" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>404</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="id" value="${#TestCase#cardId}"/>
+          <con:entry key="key" value="${#Project#key}"/>
+          <con:entry key="token" value="${#Project#token}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>key</con:entry>
+          <con:entry>token</con:entry>
+          <con:entry>id</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="Log Message (Method Finished)" id="b3ab59e3-846a-4672-b916-8605676314a2">
+    <con:settings/>
+    <con:config>
+      <script>log.info("A card has been deleted.")</script>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>cardId</con:name>
+      <con:value>5dd08384e156a58afe621607</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>da16b130-946a-4ff1-9bc0-791ce7d4d685</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2658091f-00ba-4471-9164-1ffc2cda84a7</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

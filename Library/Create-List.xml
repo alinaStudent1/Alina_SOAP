@@ -128,7 +128,7 @@ log.info("Creating a list with name ${listName} in bord with Id  = ${boardId}]..
     </con:property>
     <con:property>
       <con:name>listId</con:name>
-      <con:value>5dd03779f606dc5fccc2b602</con:value>
+      <con:value>5dd08f9cf60e9d69d0e07f42</con:value>
     </con:property>
   </con:properties>
   <con:reportParameters/>

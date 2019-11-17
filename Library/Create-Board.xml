@@ -118,7 +118,7 @@ log.info ("Creating a new board [${boardName}]...")</script>
     </con:property>
     <con:property>
       <con:name>boardId</con:name>
-      <con:value>5dd08a0b92060a014ab29b25</con:value>
+      <con:value>5dd08f9ad3aab12140cc9364</con:value>
     </con:property>
   </con:properties>
   <con:reportParameters/>
