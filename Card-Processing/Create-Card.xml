@@ -10,14 +10,14 @@
       <con:properties>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd166846ab5565778997835</con:value>
+          <con:value>5dd1699c4d0f065076b34bfa</con:value>
         </con:property>
         <con:property>
           <con:name>cardId</con:name>
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd16683fb50162d935f3e25</con:value>
+          <con:value>5dd1699ba852f13b9aac6782</con:value>
         </con:property>
       </con:properties>
     </con:config>
@@ -104,7 +104,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd16683fb50162d935f3e25</con:value>
+          <con:value>5dd1699ba852f13b9aac6782</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -143,7 +143,7 @@
         </con:property>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd166846ab5565778997835</con:value>
+          <con:value>5dd1699c4d0f065076b34bfa</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -174,7 +174,7 @@
       <con:properties>
         <con:property>
           <con:name>cardId</con:name>
-          <con:value>5dd166846636895da89b5325</con:value>
+          <con:value>5dd1699cc6e0287067f66e4f</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>
@@ -195,6 +195,12 @@
       <con:runMode>PARALLELL</con:runMode>
     </con:config>
   </con:testStep>
+  <con:tearDownScript>def boardId = context.expand( '${Properties#boardId}' )
+
+def testCase = testRunner.testCase.testSuite.project.getTestSuiteByName("Library").getTestCaseByName("Delete Board")
+
+testCase.setPropertyValue("boardId", boardId)
+testCase.run(null, false)</con:tearDownScript>
   <con:properties/>
   <con:reportParameters/>
   <con:breakPoints>
