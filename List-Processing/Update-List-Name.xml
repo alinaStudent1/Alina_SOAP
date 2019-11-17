@@ -140,7 +140,7 @@
         </con:property>
         <con:property>
           <con:name>listName</con:name>
-          <con:value>${DataGen#listName}</con:value>
+          <con:value>${DataGen#labelName}</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>

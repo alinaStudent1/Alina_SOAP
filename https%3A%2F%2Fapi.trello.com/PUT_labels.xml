@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="PUT_labels" path="/labels/{id}" id="e65c07f9-c376-415a-bed2-e36db2282005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="e65c07f9-c376-415a-bed2-e36db2282005fileName">PUT_labels</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>key</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>token</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>id</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Update" id="b88b8046-d0ad-41ba-ae08-e10f5da99ee6" method="PUT">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="b41bdb1a-29d1-4e09-89e8-f8f4e328d638" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="key" value="${#Project#key}"/>
+        <con:entry key="token" value="${#Project#token}"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>key</con:entry>
+        <con:entry>token</con:entry>
+        <con:entry>id</con:entry>
+      </con:parameterOrder>
+    </con:request>
+  </con:method>
+</con:resource>

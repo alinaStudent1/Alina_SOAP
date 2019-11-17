@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="7370b738-d2af-4b49-b2c5-afdc7ac7a286" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create Label" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="e1150ed4-acbd-458f-8826-999842bd0470fileName">Create-List</con:setting>
+    <con:setting id="7370b738-d2af-4b49-b2c5-afdc7ac7a286fileName">Create-Label</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="groovy" name="Log Message (Method Started)" id="bc5aa0c2-397f-48e1-b0df-2d3852b7913f">
+    <con:settings/>
+    <con:config>
+      <script>def boardId = context.expand( '${#TestCase#boardId}' )
+def listName = context.expand( '${#TestCase#listName}' )
+def cardName = context.expand( '${#TestCase#lcardName}' )
+def labelName = context.expand( '${#TestCase#labelName}' )
+
+log.info("Creating a labelwith name ${labelName} on card with Name  = ${cardName}]...")</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Create Label" id="87700818-9eb1-4df5-965b-ea1ff1d8391c">
+    <con:settings/>
+    <con:config service="https://api.trello.com" resourcePath="/labels" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create Label" id="a7e0b19a-5a6a-4792-bba3-fd2ad5bdb939" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://api.trello.com/1/labels</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="idBoard" value="${#TestCase#boardId}"/>
+          <con:entry key="color" value="${#TestCase#color}"/>
+          <con:entry key="name" value="${#TestCase#name}"/>
+          <con:entry key="key" value="${#Project#key}"/>
+          <con:entry key="token" value="${#Project#token}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>key</con:entry>
+          <con:entry>token</con:entry>
+          <con:entry>name</con:entry>
+          <con:entry>color</con:entry>
+          <con:entry>idBoard</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Transfer Label Id" id="928f16f2-c40e-450d-8b05-e207a2ad5681">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>label_id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create Label</con:sourceStep>
+        <con:sourcePath>$.['id']</con:sourcePath>
+        <con:targetType>labelId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Check Label Created" id="ded9cde2-fa20-4a8f-9e51-2bf0ec95b168">
+    <con:settings/>
+    <con:config service="https://api.trello.com" resourcePath="/labels/{id}" methodName="Get" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Check Label Created" id="9d880a8d-fdbd-4dd5-a00e-bd1fb43d9b98" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://api.trello.com/1/labels/</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="ae0d0564-297e-4d27-a7a6-04275603a772" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="0f7d5e00-d80d-48c3-a530-7487602bb68d" name="JsonPath Match">
+          <con:configuration>
+            <path>$['name']</path>
+            <content>${Create Label#name}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="d0f92592-b94f-4ebe-8534-4b07b537860b" name="JsonPath Match 2">
+          <con:configuration>
+            <path>$['color']</path>
+            <content>${Create Label#color}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="id" value="${#TestCase#labelId}"/>
+          <con:entry key="key" value="${#Project#key}"/>
+          <con:entry key="token" value="${#Project#token}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>key</con:entry>
+          <con:entry>token</con:entry>
+          <con:entry>id</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="Log Message (Method Finished)" id="2019556d-6d45-4d7e-b7ef-f09792f91a97">
+    <con:settings/>
+    <con:config>
+      <script>log.info("A new list has been added to board.")</script>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>name</con:name>
+      <con:value>label_8563</con:value>
+    </con:property>
+    <con:property>
+      <con:name>boardId</con:name>
+      <con:value>5dd15252e5f48b5dcb6bcacb</con:value>
+    </con:property>
+    <con:property>
+      <con:name>color</con:name>
+      <con:value>red</con:value>
+    </con:property>
+    <con:property>
+      <con:name>listId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>cardId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>labelId</con:name>
+      <con:value>5dd14d19e16dc688e1d3c593</con:value>
+    </con:property>
+    <con:property>
+      <con:name>labelId</con:name>
+      <con:value>5dd152521792a72bc36ed398</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>abc814a7-5b1d-4de1-a3e0-d5052ce92841</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>95813ea5-7c8b-4892-8f1f-f72299331acf</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a73e3aa3-7bce-4bb5-bc81-e22184aaec7f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>87700818-9eb1-4df5-965b-ea1ff1d8391c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>928f16f2-c40e-450d-8b05-e207a2ad5681</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ded9cde2-fa20-4a8f-9e51-2bf0ec95b168</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

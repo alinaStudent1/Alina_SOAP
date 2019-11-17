@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="120fd286-d8ed-4fc2-abed-3c41eed2aa6a" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Update Label Color" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="120fd286-d8ed-4fc2-abed-3c41eed2aa6afileName">Update-Label-Color</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

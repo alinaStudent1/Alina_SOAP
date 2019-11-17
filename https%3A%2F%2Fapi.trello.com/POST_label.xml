@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="POST_label" path="/labels" id="3d50f248-2df3-4a0f-9f81-ed60bd4020f9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="3d50f248-2df3-4a0f-9f81-ed60bd4020f9fileName">POST_label</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>key</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>token</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>name</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>color</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>idBoard</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="POST" id="833f8cf6-792f-492f-a880-7c8795b05823" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="FAULT">
+      <con:mediaType>text/plain; charset=utf-8</con:mediaType>
+      <con:status>400</con:status>
+      <con:params/>
+      <con:element>data</con:element>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json; charset=utf-8</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element xmlns:lab="https://api.trello.com/1/labels">lab:Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="a7e0b19a-5a6a-4792-bba3-fd2ad5bdb939" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="key" value="${#Project#key}"/>
+        <con:entry key="token" value="${#Project#token}"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>key</con:entry>
+        <con:entry>token</con:entry>
+        <con:entry>name</con:entry>
+        <con:entry>color</con:entry>
+        <con:entry>idBoard</con:entry>
+      </con:parameterOrder>
+    </con:request>
+  </con:method>
+</con:resource>

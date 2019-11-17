@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="DELETE_labels" path="/labels/{id}" id="f842a104-bc9d-43e2-843c-f22bde118908" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f842a104-bc9d-43e2-843c-f22bde118908fileName">DELETE_labels</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>key</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>token</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>id</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Method 1" id="077c5441-2f29-4320-a237-1a614222e720" method="DELETE">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="4c407d5c-686d-4cc4-949d-f94bad8de953" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="key" value="${#Project#key}"/>
+        <con:entry key="token" value="${#Project#token}"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>key</con:entry>
+        <con:entry>token</con:entry>
+        <con:entry>id</con:entry>
+      </con:parameterOrder>
+    </con:request>
+  </con:method>
+</con:resource>

@@ -10,15 +10,15 @@
       <con:properties>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd0a3ba07b2d355a0cec2af</con:value>
+          <con:value>5dd127056e710c8950ab0827</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd0a3bd4ba7300cb7672904</con:value>
+          <con:value>5dd12707d9cdb136bfeb8c59</con:value>
         </con:property>
         <con:property>
           <con:name>cardId</con:name>
-          <con:value>5dd0a3bdc18338538d940ab2</con:value>
+          <con:value>5dd1270748563f38ed0cc7b0</con:value>
         </con:property>
       </con:properties>
     </con:config>
@@ -105,7 +105,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd0a3ba07b2d355a0cec2af</con:value>
+          <con:value>5dd127056e710c8950ab0827</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -140,11 +140,11 @@
         </con:property>
         <con:property>
           <con:name>listName</con:name>
-          <con:value>${DataGen#listName}</con:value>
+          <con:value>${DataGen#labelName}</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd0a3bd4ba7300cb7672904</con:value>
+          <con:value>5dd12707d9cdb136bfeb8c59</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -175,7 +175,7 @@
       <con:properties>
         <con:property>
           <con:name>cardId</con:name>
-          <con:value>5dd0a3bdc18338538d940ab2</con:value>
+          <con:value>5dd1270748563f38ed0cc7b0</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>

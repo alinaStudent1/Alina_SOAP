@@ -11,7 +11,7 @@
 def listId = context.expand( '${#TestCase#listId}' )
 def cardName = context.expand( '${#TestCase#cardName}' )
 
-log.info("Delete a card with name ${cardName} from  list with Id  = ${listId}] on board  Id  = ${boardId}]...")</script>
+log.info("Delete a card with name ${cardName} from  list with Id  = ${listId} on board  Id  = ${boardId}]...")</script>
     </con:config>
   </con:testStep>
   <con:testStep type="restrequest" name="Delete Card" id="da16b130-946a-4ff1-9bc0-791ce7d4d685">
