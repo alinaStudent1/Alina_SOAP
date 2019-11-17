@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="88394779-6bfe-42a7-9085-f5dbf1dffc3a" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create cards" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="88394779-6bfe-42a7-9085-f5dbf1dffc3afileName">Create-cards</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="000197d3-4e7e-411e-83e8-7748e9cf5f90">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>boardId</con:name>
+          <con:value>5dd16fde4ad4ed7577889120</con:value>
+        </con:property>
+        <con:property>
+          <con:name>listId</con:name>
+          <con:value>5dd16fde8751763ab62ee8c6</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen" id="aff2cf44-1569-40d2-bcac-73b0dee946b8">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Number">
+        <con:configuration>
+          <start>1</start>
+          <end>9999</end>
+          <step/>
+          <pattern/>
+          <random>true</random>
+          <persist>false</persist>
+        </con:configuration>
+        <con:name>rand_board</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Template">
+        <con:configuration>
+          <template>board_${rand_board}</template>
+          <entitize>false</entitize>
+        </con:configuration>
+        <con:name>boardName</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Number">
+        <con:configuration>
+          <start>1</start>
+          <end>9999</end>
+          <step/>
+          <pattern/>
+          <random>true</random>
+          <persist>false</persist>
+        </con:configuration>
+        <con:name>rand_list</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Template">
+        <con:configuration>
+          <template>list_${rand_list}</template>
+          <entitize>false</entitize>
+        </con:configuration>
+        <con:name>listName</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create Board" id="3365f3d0-dc98-4f2a-b913-56f06a0c350d">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>8de7e245-dc7f-4dfe-9b90-14eef467345a</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>boardName</con:name>
+          <con:value>${DataGen#boardName}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>boardId</con:name>
+          <con:value>5dd16fde4ad4ed7577889120</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>boardId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Transfer BoardId" id="ace73e60-e4b6-4f14-970b-381a4be8a960">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>boardId</con:name>
+        <con:sourceType>boardId</con:sourceType>
+        <con:sourceStep>Create Board</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>boardId</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create List" id="3a2fcd38-71c6-47ff-aa10-a7e451127e13">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>e1150ed4-acbd-458f-8826-999842bd0470</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>boardId</con:name>
+          <con:value>${Properties#boardId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>listName</con:name>
+          <con:value>${DataGen#listName}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>listId</con:name>
+          <con:value>5dd16fde8751763ab62ee8c6</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>listId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Transfer ListId" id="cdb1a827-6ee5-433a-a2f1-23226331cb86">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>listId</con:name>
+        <con:sourceType>listId</con:sourceType>
+        <con:sourceStep>Create List</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>listId</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="Cards DataSource" id="37d7d0e4-ef7f-408f-be81-60cfea2a1247">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Excel">
+        <con:configuration>
+          <file>C:/Users/Alina/Desktop/SOAP_PROJ/cards_data.xlsx</file>
+          <worksheet/>
+          <cell>A2</cell>
+          <ignoreEmpty>false</ignoreEmpty>
+          <evaluateFormulas>false</evaluateFormulas>
+        </con:configuration>
+      </con:dataSource>
+      <con:shared>true</con:shared>
+      <con:restartShared>true</con:restartShared>
+      <con:property>Card name</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create card" id="30ab9cb4-5435-4813-9b75-17616d9bc982">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>393b77c7-2c0b-466e-8c00-4bc9419725ab</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>cardId</con:name>
+          <con:value>5dd16fecf755240703c5ede7</con:value>
+        </con:property>
+        <con:property>
+          <con:name>listId</con:name>
+          <con:value>${Properties#listId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>boardId</con:name>
+          <con:value>${Properties#boardId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>cardName</con:name>
+          <con:value>${Cards DataSource#Card name}</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>cardId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Get card" id="ceea2679-2835-4a63-85f4-726698990045">
+    <con:settings/>
+    <con:config service="https://api.trello.com" resourcePath="/cards/{id}" methodName="Get" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Get card" id="8e722e82-47d7-4bda-87cc-f971829d3907" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#serviceUrl}</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://api.trello.com/1/cards/5dd16f8e9a8aa545aa333214</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="c1436595-6e0f-49ad-b404-bf5846a355db" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="c22fd1b5-be9c-4e25-83ec-5f7928576b91" name="JsonPath Match">
+          <con:configuration>
+            <path>$['name']</path>
+            <content>${Cards DataSource#Card name}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="id" value="${Create card#cardId}"/>
+          <con:entry key="key" value="${#Project#key}"/>
+          <con:entry key="token" value="${#Project#token}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>key</con:entry>
+          <con:entry>token</con:entry>
+          <con:entry>id</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="Card DataSource Loop" id="561f1902-c4ce-4a46-899d-42a780a7f841">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>Cards DataSource</dataSourceStep>
+      <targetStep>Create card</targetStep>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>30ab9cb4-5435-4813-9b75-17616d9bc982</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ceea2679-2835-4a63-85f4-726698990045</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

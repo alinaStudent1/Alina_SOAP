@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="1baa4669-1152-4553-9096-a4c4dbe0cddb" name="Cards creation DDT" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="1baa4669-1152-4553-9096-a4c4dbe0cddbfileName">Cards-creation-DDT</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testSuite>
