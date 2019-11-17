@@ -10,15 +10,15 @@
       <con:properties>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd08f9ad3aab12140cc9364</con:value>
+          <con:value>5dd0a3ba07b2d355a0cec2af</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>
-          <con:value/>
+          <con:value>5dd0a3bd4ba7300cb7672904</con:value>
         </con:property>
         <con:property>
           <con:name>cardId</con:name>
-          <con:value/>
+          <con:value>5dd0a3bdc18338538d940ab2</con:value>
         </con:property>
       </con:properties>
     </con:config>
@@ -105,7 +105,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd09db20f55406f9c4be749</con:value>
+          <con:value>5dd0a3ba07b2d355a0cec2af</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -144,6 +144,7 @@
         </con:property>
         <con:property>
           <con:name>listId</con:name>
+          <con:value>5dd0a3bd4ba7300cb7672904</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -174,6 +175,7 @@
       <con:properties>
         <con:property>
           <con:name>cardId</con:name>
+          <con:value>5dd0a3bdc18338538d940ab2</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>
@@ -207,6 +209,20 @@
         <con:targetPath/>
         <con:upgraded>true</con:upgraded>
       </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Delete Card" id="fca54fc3-2ff8-4a2d-8ef2-9e4c1f292767">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>f185ae93-a5a7-4166-8b0f-2203474805d4</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>cardId</con:name>
+          <con:value>${Properties#cardId}</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties/>
+      <con:runMode>PARALLELL</con:runMode>
     </con:config>
   </con:testStep>
   <con:properties/>

@@ -29,6 +29,12 @@
   <con:method name="Get" id="af1e3016-f6f4-4639-b15b-20d12f61e267" method="GET">
     <con:settings/>
     <con:parameters/>
+    <con:representation type="FAULT">
+      <con:mediaType>text/plain; charset=utf-8</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+      <con:element>data</con:element>
+    </con:representation>
     <con:request name="Request 1" id="8e722e82-47d7-4bda-87cc-f971829d3907" mediaType="application/json">
       <con:settings>
         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
@@ -36,6 +42,7 @@
       <con:endpoint>${#Project#serviceUrl}</con:endpoint>
       <con:request/>
       <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
         <con:authType>No Authorization</con:authType>
       </con:credentials>
       <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>

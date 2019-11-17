@@ -91,7 +91,7 @@ log.info("Delete a card with name ${cardName} from  list with Id  = ${listId}] o
   <con:properties>
     <con:property>
       <con:name>cardId</con:name>
-      <con:value>5dd08384e156a58afe621607</con:value>
+      <con:value/>
     </con:property>
   </con:properties>
   <con:reportParameters/>
