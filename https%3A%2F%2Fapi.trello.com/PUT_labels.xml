@@ -29,6 +29,16 @@
   <con:method name="Update" id="b88b8046-d0ad-41ba-ae08-e10f5da99ee6" method="PUT">
     <con:settings/>
     <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json; charset=utf-8</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element xmlns:dd1="https://api.trello.com/1/labels/5dd15cf1fb50162d935de010">dd1:Response</con:element>
+    </con:representation>
     <con:request name="Request 1" id="b41bdb1a-29d1-4e09-89e8-f8f4e328d638" mediaType="application/json" postQueryString="false">
       <con:settings>
         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
@@ -36,6 +46,7 @@
       <con:endpoint>${#Project#serviceUrl}</con:endpoint>
       <con:request/>
       <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
         <con:authType>No Authorization</con:authType>
       </con:credentials>
       <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>

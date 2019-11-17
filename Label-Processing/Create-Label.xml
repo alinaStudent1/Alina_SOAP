@@ -10,11 +10,11 @@
       <con:properties>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd15252e5f48b5dcb6bcacb</con:value>
+          <con:value>5dd15b68fc7496893c532088</con:value>
         </con:property>
         <con:property>
           <con:name>labelId</con:name>
-          <con:value>5dd152521792a72bc36ed398</con:value>
+          <con:value>5dd15b687bfd8354a875013c</con:value>
         </con:property>
       </con:properties>
     </con:config>
@@ -66,6 +66,24 @@
         <con:mode>STEP</con:mode>
         <con:shared>false</con:shared>
       </con:property>
+      <con:property type="List">
+        <con:configuration>
+          <value>red</value>
+          <value>black</value>
+          <value>green</value>
+          <value>sky</value>
+          <value>yellow</value>
+          <value>purple</value>
+          <value>blue</value>
+          <value>orange</value>
+          <value>pink</value>
+          <value>lime</value>
+          <random>true</random>
+        </con:configuration>
+        <con:name>color</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
     </con:config>
   </con:testStep>
   <con:testStep type="calltestcase" name="Create Board" id="1b795b48-a9a1-490f-bb08-1617fe71d705">
@@ -79,7 +97,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd15252e5f48b5dcb6bcacb</con:value>
+          <con:value>5dd15b68fc7496893c532088</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -118,11 +136,11 @@
         </con:property>
         <con:property>
           <con:name>color</con:name>
-          <con:value>red</con:value>
+          <con:value>${DataGen#color}</con:value>
         </con:property>
         <con:property>
           <con:name>labelId</con:name>
-          <con:value>5dd152521792a72bc36ed398</con:value>
+          <con:value>5dd15b687bfd8354a875013c</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>

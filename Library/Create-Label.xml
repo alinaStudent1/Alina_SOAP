@@ -133,22 +133,11 @@ log.info("Creating a labelwith name ${labelName} on card with Name  = ${cardName
     </con:property>
     <con:property>
       <con:name>color</con:name>
-      <con:value>red</con:value>
-    </con:property>
-    <con:property>
-      <con:name>listId</con:name>
       <con:value/>
-    </con:property>
-    <con:property>
-      <con:name>cardId</con:name>
     </con:property>
     <con:property>
       <con:name>labelId</con:name>
       <con:value>5dd14d19e16dc688e1d3c593</con:value>
-    </con:property>
-    <con:property>
-      <con:name>labelId</con:name>
-      <con:value>5dd152521792a72bc36ed398</con:value>
     </con:property>
   </con:properties>
   <con:reportParameters/>
