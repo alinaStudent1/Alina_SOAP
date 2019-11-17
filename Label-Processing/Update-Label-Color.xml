@@ -4,6 +4,176 @@
     <con:setting id="120fd286-d8ed-4fc2-abed-3c41eed2aa6afileName">Update-Label-Color</con:setting>
   </con:settings>
   <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="106b628c-cf09-4e2a-9e52-d6e0aeaa3611">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>boardId</con:name>
+          <con:value>5dd163f15ad72a59be044e77</con:value>
+        </con:property>
+        <con:property>
+          <con:name>labelId</con:name>
+          <con:value>5dd163f1f753597a66c7c095</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen" id="a65f3463-8347-4448-a4b0-189dfa37def2">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Number">
+        <con:configuration>
+          <start>1</start>
+          <end>9999</end>
+          <step/>
+          <pattern/>
+          <random>true</random>
+          <persist>false</persist>
+        </con:configuration>
+        <con:name>rand_board</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Template">
+        <con:configuration>
+          <template>board_${rand_board}</template>
+          <entitize>false</entitize>
+        </con:configuration>
+        <con:name>boardName</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Number">
+        <con:configuration>
+          <start>1</start>
+          <end>9999</end>
+          <step/>
+          <pattern/>
+          <random>true</random>
+          <persist>false</persist>
+        </con:configuration>
+        <con:name>rand_label</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Template">
+        <con:configuration>
+          <template>label_${rand_label}</template>
+          <entitize>false</entitize>
+        </con:configuration>
+        <con:name>labelName</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="List">
+        <con:configuration>
+          <value>red</value>
+          <value>black</value>
+          <value>green</value>
+          <value>sky</value>
+          <value>yellow</value>
+          <value>purple</value>
+          <value>blue</value>
+          <value>orange</value>
+          <value>pink</value>
+          <value>lime</value>
+          <random>true</random>
+        </con:configuration>
+        <con:name>color</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create Board" id="dd680c98-c3e1-4f5c-a325-d5360297692f">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>8de7e245-dc7f-4dfe-9b90-14eef467345a</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>boardName</con:name>
+          <con:value>${DataGen#boardName}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>boardId</con:name>
+          <con:value>5dd163f15ad72a59be044e77</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>boardId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Transfer Board Id" id="34a45ab3-612c-4492-9ba0-1abf5f47e9a8">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>board_id</con:name>
+        <con:sourceType>boardId</con:sourceType>
+        <con:sourceStep>Create Board</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>boardId</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create Label" id="28e578cf-ebd8-4be1-83f0-d8367a8c1ab3">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>7370b738-d2af-4b49-b2c5-afdc7ac7a286</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>name</con:name>
+          <con:value>${DataGen#labelName}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>boardId</con:name>
+          <con:value>${Properties#boardId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>color</con:name>
+          <con:value>${DataGen#color}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>labelId</con:name>
+          <con:value>5dd163f1f753597a66c7c095</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>labelId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Transfer Label Id" id="8f8d2afd-747c-4faf-a35e-fbbd66e58332">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>label_id</con:name>
+        <con:sourceType>labelId</con:sourceType>
+        <con:sourceStep>Create Label</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>labelId</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
   <con:properties/>
   <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>34a45ab3-612c-4492-9ba0-1abf5f47e9a8</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a65f3463-8347-4448-a4b0-189dfa37def2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
 </con:testCase>

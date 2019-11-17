@@ -26,9 +26,19 @@
       <con:description xsi:nil="true"/>
     </con:parameter>
   </con:parameters>
-  <con:method name="Method 1" id="077c5441-2f29-4320-a237-1a614222e720" method="DELETE">
+  <con:method name="Delete label" id="077c5441-2f29-4320-a237-1a614222e720" method="DELETE">
     <con:settings/>
     <con:parameters/>
+    <con:representation type="FAULT">
+      <con:mediaType>text/plain; charset=utf-8</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+      <con:element>data</con:element>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
     <con:request name="Request 1" id="4c407d5c-686d-4cc4-949d-f94bad8de953" mediaType="application/json" postQueryString="false">
       <con:settings>
         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>

@@ -31,7 +31,7 @@
     <con:parameters/>
     <con:representation type="FAULT">
       <con:mediaType>text/plain; charset=utf-8</con:mediaType>
-      <con:status>404</con:status>
+      <con:status>404 400</con:status>
       <con:params/>
       <con:element>data</con:element>
     </con:representation>
