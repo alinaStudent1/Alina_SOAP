@@ -11,7 +11,7 @@
       <con:properties>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5c8692d1dddde041c36786ed</con:value>
+          <con:value>5dd16642cd0c4c074eeef6f4</con:value>
         </con:property>
       </con:properties>
     </con:config>
@@ -63,7 +63,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5c8692d1dddde041c36786ed</con:value>
+          <con:value>5dd16642cd0c4c074eeef6f4</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
