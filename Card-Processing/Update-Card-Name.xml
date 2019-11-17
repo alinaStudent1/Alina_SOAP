@@ -10,15 +10,15 @@
       <con:properties>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd16648cc8a930d4d6f83d6</con:value>
+          <con:value>5dd16685f418804062371381</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd16648282f913fec68b1c7</con:value>
+          <con:value>5dd1668580c219458ed51cc4</con:value>
         </con:property>
         <con:property>
           <con:name>cardId</con:name>
-          <con:value>5dd1664935dcab422224364a</con:value>
+          <con:value>5dd166869ff44139b40b1231</con:value>
         </con:property>
         <con:property>
           <con:name>name</con:name>
@@ -131,7 +131,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd16648cc8a930d4d6f83d6</con:value>
+          <con:value>5dd16685f418804062371381</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -170,7 +170,7 @@
         </con:property>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd16648282f913fec68b1c7</con:value>
+          <con:value>5dd1668580c219458ed51cc4</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -201,7 +201,7 @@
       <con:properties>
         <con:property>
           <con:name>cardId</con:name>
-          <con:value>5dd1664935dcab422224364a</con:value>
+          <con:value>5dd166869ff44139b40b1231</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>

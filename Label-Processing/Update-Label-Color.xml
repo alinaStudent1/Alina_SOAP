@@ -10,11 +10,11 @@
       <con:properties>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd1664d4bb78372a9d4450e</con:value>
+          <con:value>5dd1675703f4622556b3c95b</con:value>
         </con:property>
         <con:property>
           <con:name>labelId</con:name>
-          <con:value>5dd1664eba77a25d0565cbae</con:value>
+          <con:value>5dd167581d9184117da2529d</con:value>
         </con:property>
       </con:properties>
     </con:config>
@@ -97,7 +97,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd1664d4bb78372a9d4450e</con:value>
+          <con:value>5dd1675703f4622556b3c95b</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -140,7 +140,7 @@
         </con:property>
         <con:property>
           <con:name>labelId</con:name>
-          <con:value>5dd1664eba77a25d0565cbae</con:value>
+          <con:value>5dd167581d9184117da2529d</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -162,6 +162,20 @@
         <con:targetPath/>
         <con:upgraded>true</con:upgraded>
       </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Delete Label" id="0cca58c0-7527-49c5-a042-ecaed6450940">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>8b5e481d-c93c-4991-be3f-0366ddf252a5</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>labelId</con:name>
+          <con:value>${Properties#labelId}</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties/>
+      <con:runMode>PARALLELL</con:runMode>
     </con:config>
   </con:testStep>
   <con:properties/>

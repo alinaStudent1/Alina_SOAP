@@ -89,7 +89,7 @@ log.info("Deleting a board [Id = ${boardId}]...")</script>
   <con:properties>
     <con:property>
       <con:name>boardId</con:name>
-      <con:value>5dd16642cd0c4c074eeef6f4</con:value>
+      <con:value>5dd1667e228c5e1157df11b2</con:value>
     </con:property>
   </con:properties>
   <con:reportParameters/>

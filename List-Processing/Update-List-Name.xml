@@ -14,11 +14,11 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd1664446ec04696906cdac</con:value>
+          <con:value>5dd16681cd194312e3ec0b55</con:value>
         </con:property>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd166456fddcd2a6ae618e9</con:value>
+          <con:value>5dd16682cc6dc48921b8e8fa</con:value>
         </con:property>
       </con:properties>
     </con:config>
@@ -105,7 +105,7 @@
         </con:property>
         <con:property>
           <con:name>boardId</con:name>
-          <con:value>5dd1664446ec04696906cdac</con:value>
+          <con:value>5dd16681cd194312e3ec0b55</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
@@ -144,7 +144,7 @@
         </con:property>
         <con:property>
           <con:name>listId</con:name>
-          <con:value>5dd166456fddcd2a6ae618e9</con:value>
+          <con:value>5dd16682cc6dc48921b8e8fa</con:value>
         </con:property>
       </con:properties>
       <con:returnProperties>
